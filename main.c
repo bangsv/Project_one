@@ -75,8 +75,8 @@ void Input_Matrix( int **matrix, const int str, const int stolb, int *max_elemen
             }
         }
     }
-    printf("Ìàêñèìàëüíûé ýåëìåíò â ìàòðèöå = %d\n",*max_element);
-    printf("Èíäåêñ ñòîëáöà = %d \n Èíäåêñ ñòðîêè = %d\n", *index_element_stolb,*index_element_str);
+    printf("Maximum element in matrix = %d\n",*max_element);
+    printf("Column index = %d \n Row index = %d\n", *index_element_stolb,*index_element_str);
 }
 
 void Print_Matrix( int **matrix, const int str, const int stolb ) { //Matrix output
