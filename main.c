@@ -25,23 +25,23 @@ int main() {
     int max_element = 0;
     int **mass_matrix;
 
-    printf("Введите прямоугольную матрицу\n");
-    printf("Кол-во строк:");
+    printf("Input Rectangular Matrix\n");
+    printf("Number of lines:");
     scanf("%d", &str);
-    printf("Кол-во столбцов: ");
+    printf("Number of columns: ");
     scanf("%d", &stolb);
 
-    mass_matrix = (int **) malloc(str * sizeof(int *)); //Память под массив указателей
+    mass_matrix = (int **) malloc(str * sizeof(int *)); //Memory for an array of pointers
 
-    Give_out_Memory(mass_matrix,str,stolb); //выделяем память
+    Give_out_Memory(mass_matrix,str,stolb); //allocate memory
 
-    Input_Matrix(mass_matrix,str,stolb,&max_element,&index_str,&index_stolb); // формируем матрицу
+    Input_Matrix(mass_matrix,str,stolb,&max_element,&index_str,&index_stolb); // form a matrix
 
-    Print_Matrix(mass_matrix,str,stolb); //Вывод матрицы
+    Print_Matrix(mass_matrix,str,stolb); //Matrix output
 
     Search_Desired_Method(mass_matrix,str,stolb,index_str,index_stolb);
 
-    Clear_Memory(mass_matrix,str); // читсим память
+    Clear_Memory(mass_matrix,str); // clear memory
 
     free(mass_matrix);
 
@@ -49,7 +49,7 @@ int main() {
 }
 
 void Search_Desired_Method(int **matrix, const int str, const int stolb, int indexStr_maxElement, int indexStolb_maxElement){
-    int Variable = stolb / 2; //нахождения позиции макс. элемента в матрице
+    int Variable = stolb / 2; //find position max. element in the matrix
     if(indexStr_maxElement!=str-1){
         if(Variable == indexStolb_maxElement){
             Search_Min_Element_Midlle(matrix,str,stolb,indexStr_maxElement,indexStolb_maxElement);
@@ -59,7 +59,7 @@ void Search_Desired_Method(int **matrix, const int str, const int stolb, int ind
             Search_Min_Element_Right(matrix,str,stolb,indexStr_maxElement,indexStolb_maxElement);
         }
     } else {
-        printf("Минимальный элемент не удалось найти потому что \n Элемент находится на последней строке");
+        printf("The minimum element could not be found because \n The element is on the last line");
     }
 
 }
@@ -69,17 +69,17 @@ void Input_Matrix( int **matrix, const int str, const int stolb, int *max_elemen
         for (j = 0; j < stolb; j++) {
             matrix[i][j] = rand()%10;
             if(*max_element < matrix[i][j]){
-                *max_element = matrix[i][j]; //Нахождения макс. элемента
-                *index_element_str = i; //Нахождение индексов макс. элемента
+                *max_element = matrix[i][j]; //Finding max. element
+                *index_element_str = i; //Finding indexes max. element
                 *index_element_stolb = j;
             }
         }
     }
-    printf("Максимальный эелмент в матрице = %d\n",*max_element);
-    printf("Индекс столбца = %d \n Индекс строки = %d\n", *index_element_stolb,*index_element_str);
+    printf("ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г»Г© ГЅГҐГ«Г¬ГҐГ­ГІ Гў Г¬Г ГІГ°ГЁГ¶ГҐ = %d\n",*max_element);
+    printf("Г€Г­Г¤ГҐГЄГ± Г±ГІГ®Г«ГЎГ¶Г  = %d \n Г€Г­Г¤ГҐГЄГ± Г±ГІГ°Г®ГЄГЁ = %d\n", *index_element_stolb,*index_element_str);
 }
 
-void Print_Matrix( int **matrix, const int str, const int stolb ) { //Вывод матрицы
+void Print_Matrix( int **matrix, const int str, const int stolb ) { //Matrix output
     for ( i = 0; i < str; i++) {
         for ( j = 0; j < stolb; j++ ){
             printf("%2d ", matrix[i][j]);
@@ -89,11 +89,11 @@ void Print_Matrix( int **matrix, const int str, const int stolb ) { //Вывод матр
 }
 
 void Give_out_Memory(int **mass, int str, int stolb){
-    for (i = 0; i < str; i++) //Память под каждую строку
+    for (i = 0; i < str; i++)//Memory for each line
         mass[i] = (int *) malloc(stolb * sizeof(int));
 }
 
-void Clear_Memory(int **mass,int str){ //Чистка памяти
+void Clear_Memory(int **mass,int str){ // Clear memory
     for (i = 0; i < str; i++)
         free(mass[i]);
 }
@@ -111,7 +111,7 @@ int Search_Min_Element_Midlle(int **matrix, const int str, const int stolb, int 
             }
         }
     }
-    return  printf("Минимальный эелемнт в выделенной области = %d\n",min);
+    return  printf("Minimum element in selection = %d\n",min);
 }
 
 int Search_Min_Element_Right(int **matrix, const int str, const int stolb, int indexStr_maxElement, int indexStolb_maxElement){
@@ -122,7 +122,7 @@ int Search_Min_Element_Right(int **matrix, const int str, const int stolb, int i
             }
         }
     }
-    return  printf("Минимальный эелемнт в выделенной области = %d\n",min);
+    return  printf("Minimum element in selection = %d\n",min);
 }
 
 int Search_Min_Element_Left(int **matrix, const int str, const int stolb, int indexStr_maxElement, int indexStolb_maxElement){
@@ -133,5 +133,5 @@ int Search_Min_Element_Left(int **matrix, const int str, const int stolb, int in
             }
         }
     }
-    return  printf("Минимальный эелемнт в выделенной области = %d\n",min);
+    return  printf("Minimum element in selection = %d\n",min);
 }
