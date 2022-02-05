@@ -19,7 +19,6 @@ int min = 1000;
 int main() {
 
     srand(time(NULL));
-    setlocale(LC_ALL,"Rus");
 
     int str, stolb, index_str, index_stolb;
     int max_element = 0;
